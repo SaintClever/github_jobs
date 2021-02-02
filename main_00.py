@@ -1,8 +1,8 @@
 # app and screen manager
 from kivymd.app import MDApp
-from kivymd.theming import ThemeManager
+from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
-
+from kivymd.theming import ThemeManager
 
 # widgets
 from kivymd.uix.tab import MDTabsBase
@@ -11,21 +11,22 @@ from kivymd.uix.button import MDRectangleFlatButton
 from kivymd.uix.chip import MDChip
 from kivy.core.image import Image
 
-
 # properties
 from kivy.properties import ObjectProperty
-
 
 # request
 import requests
 
 
-# gitHub Jobs json
+kivy_file = Builder.load_file('githubjobs.kv')
+
+# gitHub Jobs
 url = 'https://jobs.github.com/positions'
 json_data = 'https://jobs.github.com/positions.json'
 response = requests.get(url=json_data)
 response.raise_for_status()
 data = response.json()
+
 
 # print(
 #     data['type'],
@@ -39,35 +40,34 @@ data = response.json()
 
 
 
-class MainMenuScreen(Screen):
+
+
+class MenuScreen(Screen):
     job_desc = ObjectProperty(None)
     job_locate = ObjectProperty(None)
-
-    def show_data(self):
-        # print(self.job_desc.text)
-        # print(self.job_locate.text)
-        print(f'https://jobs.github.com/positions.json?description={self.job_desc.text}&location={self.job_locate.text}')
-
-
+    pass
+    # def show_data(self):
+    #     # print(self.job_desc.text)
+    #     # print(self.job_locate.text)
+    #     print(f'https://jobs.github.com/positions.json?description={self.job_desc.text}&location={self.job_locate.text}')
 
 
-class JobListingsScreen(Screen):
-   def display_list(self):
-       pass
+class ProfileScreen(Screen):
+    pass
 
+
+class WindowManager(ScreenManager):
+    pass
 
 
 
 class GitHubJobsApp(MDApp):
+           
     def build(self):
-        self.theme_cls.primary_palette = 'Orange'
-        self.theme_cls.primary_hue = '500' # 200
-        self.theme_cls.theme_style = 'Dark'  # 'Light'
-        
-        screen_manager = ScreenManager()
-        screen_manager.add_widget(MainMenuScreen(name='main_menu'))
-        screen_manager.add_widget(JobListingsScreen(name='job_listings'))
-        return screen_manager
+        # self.theme_cls.primary_palette = 'Blue'
+        # self.theme_cls.primary_hue = '500' # 200
+        # self.theme_cls.theme_style = 'Light'  # 'Light'
+        return kivy_file
 
         
 GitHubJobsApp().run()

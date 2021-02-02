@@ -1,6 +1,10 @@
-# Main menu screen
-<MainMenuScreen>:
+ScreenManager:
+    MenuScreen:
+    ProfileScreen:
 
+
+<MenuScreen>:
+    name: 'menu'
     job_desc: job_description
     job_locate: job_location
 
@@ -43,9 +47,7 @@
         text: 'Search'
         pos_hint: {'center_x': .5, 'center_y': .30}
         on_press:
-            root.show_data()
-            root.manager.transition.direction = 'left'
-            root.manager.current = 'job_listings'
+            app.root.current = 'profile'
 
 
     Image:
@@ -55,11 +57,9 @@
 
 
 
-# Jobs listings screen
-<JobListingsScreen>:
-    MDRectangleFlatButton:
-        text: 'Search'
-        pos_hint: {'center_x': .5, 'center_y': .30}
-        on_press:
-            root.manager.transition.direction = 'right'
-            root.manager.current = 'main_menu'
+
+<ProfileScreen>:
+    name: 'profile'
+    MDLabel:
+        text: 'welcome nes'
+        halign: 'center'
