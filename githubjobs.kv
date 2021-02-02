@@ -1,0 +1,50 @@
+<MenuScreen>:
+
+    job_desc: job_description
+    job_locate: job_location
+
+    MDToolbar:
+        title: 'GitHub Jobs'
+        pos_hint: {'center_x': .5, 'center_y': .95}
+
+
+    MDTextField:
+        id: job_description
+        size_hint_x: None
+        width: '250dp'
+        pos_hint: {'center_x': .5, 'center_y': .75}
+        hint_text: 'Job Description'
+        helper_text: 'Filter by title, benefits, companies, expertise'
+        helper_text_mode: 'on_focus'
+        icon_right: 'github-circle'
+        icon_right_color: app.theme_cls.primary_color
+
+
+    MDTextField:
+        id: job_location
+        size_hint_x: None
+        width: '250dp'
+        pos_hint: {'center_x': .5, 'center_y': .60}
+        hint_text: 'Location'
+        helper_text: 'Filter by city, state, zip code or country'
+        helper_text_mode: 'on_focus'
+        icon_right: 'home-city-outline'
+        icon_right_color: app.theme_cls.primary_color
+
+
+    MDChip:
+        label: 'Full Time Only'
+        pos_hint: {'center_x': .5, 'center_y': .45}
+        check: True
+
+
+    MDRectangleFlatButton:
+        text: 'Search'
+        pos_hint: {'center_x': .5, 'center_y': .30}
+        on_press: root.show_data()
+
+
+    Image:
+        source: 'images/jobhub.png'
+        pos_hint_y: None
+        pos_hint: {'center_x': .5, 'center_y': .05}
