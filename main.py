@@ -43,17 +43,18 @@ class MainMenuScreen(Screen):
     job_desc = ObjectProperty(None)
     job_locate = ObjectProperty(None)
 
-    def show_data(self):
-        # print(self.job_desc.text)
-        # print(self.job_locate.text)
+    def show_data(self, *args):
         print(f'https://jobs.github.com/positions.json?description={self.job_desc.text}&location={self.job_locate.text}')
 
 
 
 
 class JobListingsScreen(Screen):
-   def display_list(self):
-       pass
+    def display_list(self):
+        job = self.manager.get_screen('main_menu').job_desc.text
+        loc = self.manager.get_screen('main_menu').job_locate.text
+        
+        print(job, loc)
 
 
 

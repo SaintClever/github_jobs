@@ -1,6 +1,6 @@
 # Main menu screen
 <MainMenuScreen>:
-
+    name: 'main_menu'
     job_desc: job_description
     job_locate: job_location
 
@@ -57,9 +57,11 @@
 
 # Jobs listings screen
 <JobListingsScreen>:
+    name: 'job_listings'
     MDRectangleFlatButton:
         text: 'Search'
         pos_hint: {'center_x': .5, 'center_y': .30}
         on_press:
+            root.display_list()
             root.manager.transition.direction = 'right'
             root.manager.current = 'main_menu'
