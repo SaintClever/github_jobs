@@ -1,67 +1,69 @@
+ScreenManager:
+    MainMenuScreen:
+        id: main_menu
+        name: 'main_menu'
+
+    JobListingsScreen:
+        id: job_listings
+        name: 'job_listings'
+        main: main_menu
+
+
 # Main menu screen
 <MainMenuScreen>:
-    name: 'main_menu'
     job_desc: job_description
     job_locate: job_location
 
-    MDToolbar:
-        title: 'GitHub Jobs'
-        pos_hint: {'center_x': .5, 'center_y': .95}
+    FloatLayout:
+        MDToolbar:
+            title: 'GitHub Jobs'
+            pos_hint: {'center_x': .5, 'center_y': .959}
+            # radius: 0, 0, 25, 25
 
 
-    MDTextField:
-        id: job_description
-        size_hint_x: None
-        width: '250dp'
-        pos_hint: {'center_x': .5, 'center_y': .75}
-        hint_text: 'Job Description'
-        helper_text: 'Filter by title, benefits, companies, expertise'
-        helper_text_mode: 'on_focus'
-        icon_right: 'github'
-        icon_right_color: app.theme_cls.primary_color
+        MDTextField:
+            id: job_description
+            size_hint_x: None
+            width: '325dp'
+            pos_hint: {'center_x': .5, 'center_y': .80}
+            hint_text: 'Job Description'
+            helper_text: 'Filter by title, benefits, companies, expertise'
+            helper_text_mode: 'on_focus'
+            icon_right: 'github'
+            icon_right_color: app.theme_cls.primary_color
 
 
-    MDTextField:
-        id: job_location
-        size_hint_x: None
-        width: '250dp'
-        pos_hint: {'center_x': .5, 'center_y': .60}
-        hint_text: 'Location'
-        helper_text: 'Filter by city, state, zip code or country'
-        helper_text_mode: 'on_focus'
-        icon_right: 'home-city-outline'
-        icon_right_color: app.theme_cls.primary_color
+        MDTextField:
+            id: job_location
+            size_hint_x: None
+            width: '325dp'
+            pos_hint: {'center_x': .5, 'center_y': .70}
+            hint_text: 'Location'
+            helper_text: 'Filter by city, state, zip code or country'
+            helper_text_mode: 'on_focus'
+            icon_right: 'home-city-outline'
+            icon_right_color: app.theme_cls.primary_color
 
 
-    MDChip:
-        text: 'Full Time Only'
-        pos_hint: {'center_x': .5, 'center_y': .45}
-        check: True
-
-
-    MDRectangleFlatButton:
-        text: 'Search'
-        pos_hint: {'center_x': .5, 'center_y': .30}
-        on_press:
-            root.show_data()
-            root.manager.transition.direction = 'left'
-            root.manager.current = 'job_listings'
-
-
-    Image:
-        source: 'images/jobhub.png'
-        pos_hint_y: None
-        pos_hint: {'center_x': .5, 'center_y': .05}
+        MDRectangleFlatButton:
+            text: 'Search'
+            pos_hint: {'center_x': .5, 'center_y': .60}
+            size: '100dp', '100dp'
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'job_listings'
+                root.show_data()
 
 
 
 # Jobs listings screen
 <JobListingsScreen>:
-    name: 'job_listings'
-    MDRectangleFlatButton:
-        text: 'Search'
-        pos_hint: {'center_x': .5, 'center_y': .30}
-        on_press:
-            root.display_list()
-            root.manager.transition.direction = 'right'
-            root.manager.current = 'main_menu'
+    FloatLayout:
+
+        MDRectangleFlatButton:
+            text: 'return'
+            pos_hint: {'center_x': .5, 'center_y': .05}
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'main_menu'
+                # root.display_list()
